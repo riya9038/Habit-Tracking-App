@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from "./Navbar";
 import Home from "../pages/Home";
-import Habit from "../pages/Habit";
+import Calender from "../pages/Calender";
 import Progress from '../pages/Progress';
+import NewHabit from '../pages/NewHabit';
 const Page404 = () => {
   return <h1>404</h1>;
 };
@@ -15,7 +16,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/progress' element={<Progress/>} />
-          <Route path='/calender' element={<Habit/>} />
+          <Route path='/calender' element={<Calender/>} />
+          <Route path='/addHabit' element={<NewHabit/>} />
           {/* <Route  element={<Home/>} /> */}
         </Routes>
       </Router>

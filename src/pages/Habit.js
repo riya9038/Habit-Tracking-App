@@ -1,22 +1,20 @@
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Habit(){
-    return (
-        <div className="calender">
-          <FullCalendar
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            initialView="dayGridMonth"
+const Habit=(props)=>{
+    console.log("props",props);
+    const {title} = props.habit;
+    const history = useNavigate();
 
-            headerToolbar = {{
-                start: 'title',
-                center: 'dayGridMonth,timeGridWeek,timeGridDay',   
-                end: 'today prev,next'
-              }}
-          />
+    const handleClick=()=>{
+        history("/progress",{state:props});
+    }
+
+    return(
+        <div className="habit-list">
+            <li className="habits" onClick={()=>handleClick()}>{title}</li>
+            
         </div>
-      );
+    )
 }
 export default Habit;

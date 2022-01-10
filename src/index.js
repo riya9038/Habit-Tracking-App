@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './components/App';
 import { ToastProvider } from 'react-toast-notifications';
-import {HabitProvider}from './providers/habitProvider';
+import rootReducer from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from "react-redux";
+//import thunk from "redux-thunk";
 
+
+const store= createStore(rootReducer);
 ReactDOM.render(
   <React.StrictMode>
-    <ToastProvider autoDismiss autoDismissTimeout={5000} placement="top-left">
-      <HabitProvider>
-        <App />
-      </HabitProvider>
-    </ToastProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
+
 
 
